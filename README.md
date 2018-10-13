@@ -16,9 +16,9 @@
 - @imannie
   
 2. Software goals and concept:
- Goal:
+-Goal:
 
- User story:
+-User story:
  
 3. Project specifications:
 - APIs
