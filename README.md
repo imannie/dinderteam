@@ -1,15 +1,11 @@
 # Teamy
 ## Kickstart Coding Group Project 
 
- -[ ] Milestone 1 - Due October 13th 3:00PM (Or October 15th at the latest)
- 
- -[ ] Milestone 2 - Due October 17th 6:00PM
- 
- -[ ] Milestone 3 - Due October 24th 6:00PM
- 
- -[ ] Milestone 4 - Due October 27th 6:00PM
- 
- -[ ] Milestone 5 (Optional)
+[ ] Milestone 1 - Due October 13th 3:00PM (Or October 15th at the latest)
+[ ] Milestone 2 - Due October 17th 6:00PM
+[ ] Milestone 3 - Due October 24th 6:00PM
+[ ] Milestone 4 - Due October 27th 6:00PM
+[ ] Milestone 5 (Optional)
  
  
 ### Milestone 1
