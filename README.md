@@ -9,18 +9,18 @@
  
  
 ### Milestone 1
- 1. Team Members:
-  @rudyt
-  @jsloopy
-  @simomsays
-  @imannie
+1. Team Members:
+- @rudyt
+- @jsloopy
+- @simomsays
+- @imannie
   
- 2. Software goals and concept:
+2. Software goals and concept:
  Goal:
 
  User story:
  
- 3. Project specifications:
+3. Project specifications:
 - APIs
 - Work involved
 - Wireframing
