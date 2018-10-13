@@ -9,26 +9,26 @@
  
  
 ### Milestone 1
-1. Team Members:
+#### 1. Team Members:
 - @rudyt
 - @jsloopy
 - @simomsays
 - @imannie
   
-2. Software goals and concept:
+#### 2. Software goals and concept:
 - Goal:
 
 - User story:
  
-3. Project specifications:
+#### 3. Project specifications:
 - APIs
 - Work involved
 - Wireframing
 
-4. Challenges and unknowns:
+#### 4. Challenges and unknowns:
 - risks & mitigation
 
-5. Group roles:
+#### 5. Group roles:
 - Front-end engineer
 - Back-end engineer
 - API engineer
