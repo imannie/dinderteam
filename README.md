@@ -16,7 +16,7 @@
 - @imannie
   
 #### 2. Software goals and concept:
-- Goal:
+- Goal: This app helps a group of friends choose a restaurant. Using the Yelp API. The user makes a couple of filter selections, such as city and price. The app then uses those filters to retrieve data from the Yelp API and presents these one at a time in a tinder-like fashion. Swipe left to discard a suggestion, swipe right to add to your list of possibilities. Once 4 possible resturants are in their list, they can pick themselves and the app can choose for them.
 
 - User story:
  
