@@ -29,6 +29,8 @@ A group of friends is hungry. But what to eat? One family includes a teenage veg
 
 #### 4. Challenges and unknowns:
 - risks & mitigation
+- keeping project simple and pointed
+- creating something useable in the taime alloted rather than just making a proof of concept
 
 #### 5. Group roles:
 - Front-end engineer : Annie
