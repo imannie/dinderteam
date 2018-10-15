@@ -1,6 +1,6 @@
 # Teamy
 ## Kickstart Coding Group Project 
-- [ ] Milestone 1 - Due October 13th 3:00PM (Or October 15th at the latest)
+- [x] Milestone 1 - Due October 13th 3:00PM (Or October 15th at the latest)
 - [ ] Milestone 2 - Due October 17th 6:00PM 
 - [ ] Milestone 3 - Due October 24th 6:00PM
 - [ ] Milestone 4 - Due October 27th 6:00PM
@@ -31,7 +31,6 @@ A group of friends is hungry. But what to eat? One family includes a teenage veg
 - risks & mitigation
 
 #### 5. Group roles:
-- Front-end engineer
-- Back-end engineer
-- API engineer
-- Data engineer
+- Front-end engineer : Annie
+- Back-end engineer : Jason
+- API & Data engineer : Rudy and Simon
