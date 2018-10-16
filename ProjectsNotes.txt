@@ -5,3 +5,8 @@ This app helps a group of friends choose a resturant. Using the Yelp API. the us
 API: YELP
 Database: Users can create an account or continue as a guest. If they are users, then we can store their history and not show them resturants they have previously rejected, or clear their history and start fresh.
 
+User Story:
+
+A group of friends is hungry. But what to eat? One family includes a teenage vegitarian. Another wants Chinese food or pasta. No one wants to go to the same old place yet again. What to do? Using Dinder, the group swpies left or right to narrow the list of possibilities. Once four resturants were given the swipe-right "thumbs up," the list of possibilities is displayed. The user can  choose, or if still undecided, a "Choose For Me" button picks one of the four and off the group goes to eat.
+
+
