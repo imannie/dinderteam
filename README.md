@@ -17,9 +17,9 @@
 - @grace5l5
   
 #### 2. Software goals and concept:
-- Goal: This app helps a group of friends choose a restaurant. 
+- __Goal:__ This app helps a group of friends choose a restaurant. 
 
-- User story:
+- __User story:__
 
 A group of friends is hungry. But what to eat? One family includes a teenage vegitarian. Another wants Chinese food or pasta. No one wants to go to the same old place yet again. What to do? Using Dinder, the group swpies left or right to narrow the list of possibilities. Once four resturants were given the swipe-right "thumbs up," the list of possibilities is displayed. The user can  choose, or if still undecided, a "Choose For Me" button picks one of the four and off the group goes to eat.
 
@@ -31,11 +31,10 @@ A group of friends is hungry. But what to eat? One family includes a teenage veg
 
 #### 4. Challenges and unknowns:
 
-- risks & mitigation
-- keeping project simple and pointed
-- creating something useable in the taime alloted rather than just making a proof of concept
-=======
 - Risks & mitigation
+- Keeping project simple and pointed
+- Creating something useable in the taime alloted rather than just making a proof of concept
+
 
 
 #### 5. Group roles:
