@@ -14,6 +14,7 @@
 - @jsloopy
 - @simomsays
 - @imannie
+- @grace5l5
   
 #### 2. Software goals and concept:
 - Goal: This app helps a group of friends choose a restaurant. 
