@@ -5,5 +5,6 @@ from restaurants import views
 
 urlpatterns = [
     
-    path('',views.index),
+    path('',views.homepage),
+    path("index/", views.index)
 ]
