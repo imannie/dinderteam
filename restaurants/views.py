@@ -46,3 +46,18 @@ def index(request):
     }
     return render(request, "../new_age/index.html", context)
 
+
+'''
+The Winner code should pick the random winner from the maybe_list
+and display that resturant info, as read from the SQL database.
+'''
+def winner(request): 
+  context= {
+      
+    "price":'price from SQLite (not implemented)',
+    "name":'name from SQLite (not implemented)',
+    "rating":'rating from SQLite (not implemented)',
+    "image": 'https://via.placeholder.com/350x350',
+
+  }
+  return render(request, "../new_age/winner.html", context)
