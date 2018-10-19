@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 import requests
-import urllib.request 
-import cv2
-import numpy as np
+import sqlite3
 
 header = {
     "Authorization":  "Bearer EgNHeojg_ryrKUYzlgCaPMXU7i60GOR-Yy1qxnoYvIDNM8OEq1bfq1a5cbuiExw94-oDF86cKIGfZI73iQoXsxZYndshHdSCeqUMjCi1C-KqdY1jA2Rkw5O4OQWwWnYx"
@@ -11,17 +9,37 @@ response = requests.get("https://api.yelp.com/v3/businesses/search?term=food&loc
 data = response.json()
 
 for info in data['businesses']:
-    single = info["alias"]
+    name = info["alias"]
     price = info["price"]
     rating = info["rating"]
     image = info["image_url"]
-
 def index(request):
+
+    # if request.method == "POST":
+
+    #     user = User.objects.create(
+    #         name=name,
+    #         price=price,
+    #         rating=last_name,
+    #         image=password,
+    #         )
+
+    #     user.save()
+
+    if request.method == "post":
+        hold = 1
+        db = sqlite3.connect('db.sqlite3')
+        cursor = db.cursor()
+        cursor.execute('''INSERT INTO restaurants_restaurants_info(name, price, rating, image, hold)
+                    VALUES(?,?,?,?,?)''', (name, price, rating, image, hold))   
+        db.commit()
+        db.close()
+
     data = str(rating)+"/5.0" 
     context= {
         
         "price":price,
-        "name":single,
+        "name":name,
         "rating":data,
         "image":image,
 
