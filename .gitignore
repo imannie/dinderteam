@@ -2,4 +2,8 @@
 *.DS_store
 =======
 .DS_Store
+<<<<<<< HEAD
 >>>>>>> 0376ae0aea1c66ddd696e622bb25b1f55821db0e
+=======
+Pipfile.lock
+>>>>>>> 3082f7863bb45d8bd84b9e37b3d1f7eceddce80c
