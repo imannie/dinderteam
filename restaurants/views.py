@@ -2,7 +2,16 @@ from django.shortcuts import render, redirect
 import requests
 import sqlite3
 from django import forms
+import glob
+import os
+from django.http import HttpResponse
 
+# holder = []
+# all_html_files = glob.glob("content/*.html")
+# for single in all_html_files:
+#     file_name = os.path.basename(single)
+#     name_only, extension = os.path.splitext(file_name)
+#     holder.append(name_only)
 
 
 header = {
@@ -20,10 +29,10 @@ for info in data['businesses']:
     names.append(name)
 
 print(names)
-# dropdown_choices= [
-#     (name, name)
+dropdown_choices= [
+    (name, "name")
 
-# ]
+]
 
 
 # class FiltersForm(forms.Form):
@@ -36,47 +45,63 @@ print(names)
 
 
 def homepage(request):
-    form  = FiltersForm(request.POST)
-    if request.method == 'POST':
-        if form.is_valid():
-            return redirect("/index/")
+    # form  = FiltersForm(request.POST)
+    # if request.method == 'POST':
+    #     if form.is_valid():
+    #         return redirect("/swipe/")
     context = {
-        'form': form,
+        # 'form': form,
+        
      }
 
-    return render(request, "../new_age/homepage.html", context)
+    return render(request, "homepage.html", context)
 
 
-def index(request):
+# def index(request):
 
-    if request.method == "POST":
+#     if request.method == "POST":
 
-        user = User.objects.create(
-            name=name,
-            price=price,
-            rating=last_name,
-            image=password,
-            )
+#         user = User.objects.create(
+#             name=name,
+#             price=price,
+#             rating=last_name,
+#             image=password,
+#             )
 
-        user.save()
+#         user.save()
 
-    if request.method == "post":
-        hold = 1
-        db = sqlite3.connect('db.sqlite3')
-        cursor = db.cursor()
-        cursor.execute('''INSERT INTO restaurants_restaurants_info(name, price, rating, image, hold)
-                    VALUES(?,?,?,?,?)''', (name, price, rating, image, hold))   
-        db.commit()
-        db.close()
+#     if request.method == "post":
+#         hold = 1
+#         db = sqlite3.connect('db.sqlite3')
+#         cursor = db.cursor()
+#         cursor.execute('''INSERT INTO restaurants_restaurants_info(name, price, rating, image, hold)
+#                     VALUES(?,?,?,?,?)''', (name, price, rating, image, hold))   
+#         db.commit()
+#         db.close()
 
-    data = str(rating)+"/5.0" 
-    context= {
+#     data = str(rating)+"/5.0" 
+#     context= {
         
-        "price":price,
-        "name":name,
-        "rating":data,
-        "image":image,
+#         "price":price,
+#         "name":name,
+#         "rating":data,
+#         "image":image,
 
-    }
-    return render(request, "../new_age/index.html", context)
+#     }
+#     return render(request, "../new_age/index.html", context)
 
+
+# '''
+# The Winner code should pick the random winner from the maybe_list
+# and display that resturant info, as read from the SQL database.
+# '''
+# def winner(request): 
+#   context= {
+      
+#     "price":'price from SQLite (not implemented)',
+#     "name":'name from SQLite (not implemented)',
+#     "rating":'rating from SQLite (not implemented)',
+#     "image": 'https://via.placeholder.com/350x350',
+
+#   }
+#   return render(request, "../new_age/winner.html", context)
