@@ -33,6 +33,15 @@ dropdown_choices= [
     (name, "name")
 
 ]
+dropdown_choices = [
+    (1, "POption 1"),
+    (2, "OPption 2"),
+]
+
+dropdown_choices = [
+    ('berk', 'Berkeley'),
+    ('oak', 'Oakland'),
+]
 
 
 # class FiltersForm(forms.Form):
@@ -55,6 +64,30 @@ def homepage(request):
      }
 
     return render(request, "homepage.html", context)
+
+def swipe(request):
+    # form  = FiltersForm(request.POST)
+    # if request.method == 'POST':
+    #     if form.is_valid():
+    #         return redirect("/swipe/")
+    context = {
+        # 'form': form,
+        
+     }
+
+    return render(request, "swipe.html", context)
+
+def details(request):
+    # form  = FiltersForm(request.POST)
+    # if request.method == 'POST':
+    #     if form.is_valid():
+    #         return redirect("/swipe/")
+    context = {
+        # 'form': form,
+        
+     }
+
+    return render(request, "details.html", context)
 
 
 # def index(request):
