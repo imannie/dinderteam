@@ -6,12 +6,7 @@ import glob
 import os
 from django.http import HttpResponse
 
-# holder = []
-# all_html_files = glob.glob("content/*.html")
-# for single in all_html_files:
-#     file_name = os.path.basename(single)
-#     name_only, extension = os.path.splitext(file_name)
-#     holder.append(name_only)
+
 
 
 header = {
@@ -28,42 +23,67 @@ for info in data['businesses']:
     image = info["image_url"]
     names.append(name)
 
-print(names)
-dropdown_choices= [
-    (name, "name")
+
+dropdown_city= [
+    ('Oakland', "Oakland"),
+    ("San Francisco", "San francisco"),
+    ("Alameda", "Alameda"),
+    ("San Jose", "San Jose"),
+    ("Daily City", "Daily City"),
+    ("Berkeley", "Berkeley"),
+    ("San Leandro", "San Leandro"),
+    ("Hayward", "Hayward"),
 
 ]
-dropdown_choices = [
-    (1, "POption 1"),
-    (2, "OPption 2"),
+dropdown_prices = [
+    ("one_dollar", "$"),
+    ("two_dollar", "$$"),
+    ("three_dollar", "$$$"),
+    ("four_dollar", "$$$$")
 ]
 
-dropdown_choices = [
-    ('berk', 'Berkeley'),
-    ('oak', 'Oakland'),
+dropdown_food = [
+    ('Burger', 'Burger'),
+    ('Chinese', 'Chinese'),
+    ("Italian", "Italian"),
+    ("Japanese", "Japanese"),
+    ("Mexican", "Mexican"),
+    ("Thai", "Thai")
 ]
 
-
-# class FiltersForm(forms.Form):
-#     # city = forms.CharField(label="Food Type", widget=forms.Select(choices=dropdown_choices[1]))
-#     # price = forms.CharField(label="Food Type", widget=forms.Select(choices=dropdown_choices[1]))
-#     # rating = forms.CharField(label="Food Type", widget=forms.Select(choices=dropdown_choices[2]))
-#     food_type = forms.CharField(label="Food Type", widget=forms.Select(choices=names))
    
 
+class FiltersCityForm(forms.Form):
+    city = forms.ChoiceField(label="Pick a city", choices=dropdown_city)
+    price = forms.ChoiceField(label="Price", choices=dropdown_prices) 
+    food = forms.ChoiceField(label="Food Type", choices=dropdown_food)
+    
 
 
 def homepage(request):
-    # form  = FiltersForm(request.POST)
-    # if request.method == 'POST':
-    #     if form.is_valid():
-    #         return redirect("/swipe/")
+    form  = FiltersCityForm(request.POST)
+    if request.method == 'POST':
+        # Fill out form with thedata they provide
+        form_city = FiltersCityForm(request.POST)
+    else:
+        # Make blank, empty form, for them to use
+        form_city= FiltersCityForm()
+    
     context = {
-        # 'form': form,
-        
+       
+        'form_city': form_city,
+       
      }
 
+
+
     return render(request, "homepage.html", context)
+
+
+
+
+
+
 
 def swipe(request):
     # form  = FiltersForm(request.POST)
