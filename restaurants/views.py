@@ -1,48 +1,39 @@
 from django.shortcuts import render, redirect
 import requests
 import sqlite3
+from .models import Restaurants_info
+import random
 
-header = {
-    "Authorization":  "Bearer EgNHeojg_ryrKUYzlgCaPMXU7i60GOR-Yy1qxnoYvIDNM8OEq1bfq1a5cbuiExw94-oDF86cKIGfZI73iQoXsxZYndshHdSCeqUMjCi1C-KqdY1jA2Rkw5O4OQWwWnYx"
-}
-response = requests.get("https://api.yelp.com/v3/businesses/search?term=food&location=oakland", headers=header)
-data = response.json()
-
-for info in data['businesses']:
-    name = info["alias"]
-    price = info["price"]
-    rating = info["rating"]
-    image = info["image_url"]
 def index(request):
+    header = {
+        "Authorization":  "Bearer EgNHeojg_ryrKUYzlgCaPMXU7i60GOR-Yy1qxnoYvIDNM8OEq1bfq1a5cbuiExw94-oDF86cKIGfZI73iQoXsxZYndshHdSCeqUMjCi1C-KqdY1jA2Rkw5O4OQWwWnYx"
+    }   
+    response = requests.get("https://api.yelp.com/v3/businesses/search?term=food&location=oakland", headers=header)
+    data = response.json()
 
-    # if request.method == "POST":
+    if request.session.get('has_visited'):
+        for item in data['businesses']:
+            restaurant = Restaurants_info.objects.create(
+                name = item['name'],
+                price = item['price'],
+                rating = item['rating'],
+                image = item['image_url'], 
+            )
+        request.session['has_visited'] = True
 
-    #     user = User.objects.create(
-    #         name=name,
-    #         price=price,
-    #         rating=last_name,
-    #         image=password,
-    #         )
+    got_one = Restaurants_info.objects.order_by('?')[0]
+    data = str(got_one.rating)+"/5.0"
 
-    #     user.save()
-
-    if request.method == "post":
-        hold = 1
-        db = sqlite3.connect('db.sqlite3')
-        cursor = db.cursor()
-        cursor.execute('''INSERT INTO restaurants_restaurants_info(name, price, rating, image, hold)
-                    VALUES(?,?,?,?,?)''', (name, price, rating, image, hold))   
-        db.commit()
-        db.close()
-
-    data = str(rating)+"/5.0" 
-    context= {
-        
-        "price":price,
-        "name":name,
+    context = {
+        "name":  got_one.name,
+        "price": got_one.price,
         "rating":data,
-        "image":image,
+        "image": got_one.image,
 
     }
-    return render(request, "../new_age/index.html", context)
 
+   
+    return render(request, "../new_age/index.html",context)
+
+
+    
