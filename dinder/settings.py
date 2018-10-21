@@ -55,7 +55,7 @@ ROOT_URLCONF = 'dinder.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "new_age")],
+        'DIRS': [os.path.join(BASE_DIR, "Newlook")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

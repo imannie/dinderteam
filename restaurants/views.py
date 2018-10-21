@@ -44,7 +44,31 @@ def index(request):
         "image":image,
 
     }
-    return render(request, "../new_age/index.html", context)
+    return render(request, "../Newlook/index.html", context)
+
+
+def swipe(request):
+  # This is a temporary copy of the index code above, Rudy trying to make
+  # this work with the new swiper.html page. 
+    if request.method == "post":
+        hold = 1
+        db = sqlite3.connect('db.sqlite3')
+        cursor = db.cursor()
+        cursor.execute('''INSERT INTO restaurants_restaurants_info(name, price, rating, image, hold)
+                    VALUES(?,?,?,?,?)''', (name, price, rating, image, hold))   
+        db.commit()
+        db.close()
+
+    data = str(rating)+"/5.0" 
+    context= {
+        
+        "price":price,
+        "name":name,
+        "rating":data,
+        "image":image,
+
+    }
+    return render(request, "../Newlook/swipe.html", context)
 
 
 '''
