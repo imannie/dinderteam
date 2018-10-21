@@ -74,7 +74,7 @@ def homepage(request):
         'form_city': form_city,
        
      }
-
+    
 
 
     return render(request, "homepage.html", context)
