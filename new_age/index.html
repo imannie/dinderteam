@@ -59,7 +59,7 @@
       <div class="container h-100">
         <div class="row h-100">
           <div class="col-lg-2 my-auto">
-            <button class="left btn">A</button>
+            <a href="" type="button" name="good" class="left btn">A</a>
           </div>
           <div class="col-lg-8 my-auto">
             <div class="header-content mx-auto">
@@ -78,7 +78,11 @@
             </div>
           </div>
           <div class="col-lg-2 my-auto">
-            <button class="right btn"><a href="">B</button>
+            <form name="badform" method="GET">
+              {% csrf_token %}
+             <input <input type="hidden" name="bad" value=1>
+              <a href="" type="button" class="right btn">B</a>
+          </form>
           </div>
         </div>
       </div>
