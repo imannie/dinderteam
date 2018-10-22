@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,19 +13,19 @@
         <!-- Page Title -->
         <title>Dinder Dope</title>
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link href="{% static "/vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
         <!-- Simple line Icon -->
-        <link rel="stylesheet" href="css/simple-line-icons.css">
+        <link href="{% static "/css/simple-line-icons.css" %} " rel="stylesheet" >
         <!-- Themify Icon -->
-        <link rel="stylesheet" href="css/themify-icons.css">
+        <link  href="{% static "/css/themify-icons.css" &}" rel="stylesheet">
         <!-- Hover Effects -->
-        <link rel="stylesheet" href="css/set1.css">
+        <link href="{% static "/css/set1.css" %} " rel="stylesheet" >
         <!-- Swiper CSS -->
-        <link rel="stylesheet" href="css/swiper.css">
+        <link href="{% static "/css/swiper.css" %} "  rel="stylesheet" >
         <!-- Main CSS -->
-        <link rel="stylesheet" href="css/style.css">
+        <link  href="{% static "/css/style.css" %} " rel="stylesheet">
     </head>
 
     <body>
@@ -35,7 +36,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <nav class="navbar navbar-expand-lg navbar-light">
-                                <a class="navbar-brand" href="home.html">Diner</a>
+                                <a class="navbar-brand" href="home.html">Dinder</a>
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-menu"></span>
                 </button>
@@ -88,56 +89,25 @@
                                         <div class="swiper-slide">
                                             <div class="hero-content flex justify-content-center align-items-center flex-column">
                                                 <a href="detail.html">
-                                                    <img src="images/featured1.jpg" class="img-fluid" alt="#">
+                                                    <img src="{{image}}" class="img-fluid" alt="#">
                                                         <div class="featured-title-box">
-                                                            <h6>Burger & Lobster</h6>
+                                                            <h6>{{name|title}}</h6>
                                                             <p>Restaurant </p> <span>• </span>
-                                                            <p>3 Reviews</p> <span> • </span>
-                                                            <p><span>$$$</span>$$</p>
+                                                            <p>{{rating}}</p> <span> • </span>
+                                                            <p>{{price}}</p>
                                                             <ul>
                                                                 <li><span class="icon-location-pin"></span>
-                                                                    <p>Address</p>
+                                                                    <p>NEED ADDRESS FROM API</p>
                                                                 </li>
                                                                 <li><span class="icon-screen-smartphone"></span>
-                                                                    <p>+44 20 7336 8898</p>
+                                                                    <p>NEED PHONE FROM API</p>
                                                                 </li>
                                                                 <li><span class="icon-link"></span>
-                                                                    <p>website address</p>
+                                                                    <p>NEED URL FROM API</p>
                                                                 </li>
                                                             </ul>
                                                         <div class="bottom-icons">
-                                                        <div class="closed-now">CLOSED NOW</div>
-                                                            <span class="ti-heart"></span>
-                                                            <span class="ti-bookmark"></span>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div><!-- .hero-content -->
-                                        </div><!-- .swiper-slide -->
-
-                                        <div class="swiper-slide">
-                                            <div class="hero-content flex justify-content-center align-items-center flex-column">
-                                                <a href="detail.html">
-                                                    <img src="images/featured2.jpg" class="img-fluid" alt="#">
-                                                    <div class="featured-title-box">
-                                                        <h6>Joe’s Shanghai</h6>
-                                                        <p>Restaurant </p> <span>• </span>
-                                                        <p>3 Reviews</p> <span> • </span>
-                                                        <p><span>$$$</span>$$</p>
-                                                        <ul>
-                                                            <li><span class="icon-location-pin"></span>
-                                                                <p>Address</p>
-                                                            </li>
-                                                            <li><span class="icon-screen-smartphone"></span>
-                                                                <p>+44 20 7336 8898</p>
-                                                            </li>
-                                                            <li><span class="icon-link"></span>
-                                                                <p>Website address</p>
-                                                            </li>
-
-                                                        </ul>
-                                                        <div class="bottom-icons">
-                                                            <div class="closed-now">CLOSED NOW</div>
+                                                        <div class="closed-now">NEED HOURS FROM API</div>
                                                             <span class="ti-heart"></span>
                                                             <span class="ti-bookmark"></span>
                                                         </div>
@@ -147,36 +117,8 @@
                                         </div><!-- .swiper-slide -->
 
 
-                                        <div class="swiper-slide">
-                                            <div class="hero-content flex justify-content-center align-items-center flex-column">
-                                                <a href="detail.html">
-                                                    <img src="images/featured3.jpg" class="img-fluid" alt="#">
-                                                    <div class="featured-title-box">
-                                                        <h6>Tasty Hand-Pulled Noodles</h6>
-                                                        <p>Restaurant </p> <span>• </span>
-                                                        <p>3 Reviews</p> <span> • </span>
-                                                        <p><span>$$$</span>$$</p>
-                                                        <ul>
-                                                            <li><span class="icon-location-pin"></span>
-                                                                <p>Address</p>
-                                                            </li>
-                                                            <li><span class="icon-screen-smartphone"></span>
-                                                                <p>+44 20 7336 8898</p>
-                                                            </li>
-                                                            <li><span class="icon-link"></span>
-                                                                <p>Website address</p>
-                                                            </li>
 
-                                                        </ul>
-                                                        <div class="bottom-icons">
-                                                            <div class="open-now">OPEN NOW</div>
-                                                            <span class="ti-heart"></span>
-                                                            <span class="ti-bookmark"></span>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div><!-- .hero-content -->
-                                        </div><!-- .swiper-slide -->
+                                        
                                     </div><!-- .swiper-wrapper -->
                                 </div>
                             </div>
@@ -211,12 +153,12 @@
 
         <!-- jQuery, Bootstrap JS. -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src='js/jquery.js'></script>
-        <script src='js/swiper.min.js'></script>
-        <script src='js/custom.js'></script>
+        <script src='{% static '/js/jquery-3.2.1.min.js' %}'></script>
+        <script src='{% static '/js/popper.min.js' %}'></script>
+        <script src='{% static '/js/bootstrap.min.js' %}'></script>
+        <script src='{% static '/js/jquery.js' %}'></script>
+        <script src='{% static '/js/swiper.min.js' %}'></script>
+        <script src='{% static '/js/custom.js' %}'></script>
 
         <script>
             $(window).scroll(function() {
