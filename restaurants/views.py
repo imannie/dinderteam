@@ -12,16 +12,18 @@ from django.http import HttpResponse
 header = {
     "Authorization":  "Bearer EgNHeojg_ryrKUYzlgCaPMXU7i60GOR-Yy1qxnoYvIDNM8OEq1bfq1a5cbuiExw94-oDF86cKIGfZI73iQoXsxZYndshHdSCeqUMjCi1C-KqdY1jA2Rkw5O4OQWwWnYx"
 }
-response = requests.get("https://api.yelp.com/v3/businesses/search?term=food&location=oakland", headers=header)
+response = requests.get("https://api.yelp.com/v3/businesses/search?term=food&location=oakland&price=1", headers=header)
 data = response.json()
 
-names = []
-for info in data['businesses']:
-    name = info["alias"]
-    price = info["price"]
-    rating = info["rating"]
-    image = info["image_url"]
-    names.append(name)
+print(data)
+
+# names = []
+# for info in data['businesses']:
+#     name = info["alias"]
+#     price = info["price"]
+#     rating = info["rating"]
+#     image = info["image_url"]
+#     names.append(name)
 
 
 dropdown_city= [
@@ -36,48 +38,66 @@ dropdown_city= [
 
 ]
 dropdown_prices = [
-    ("one_dollar", "$"),
-    ("two_dollar", "$$"),
-    ("three_dollar", "$$$"),
-    ("four_dollar", "$$$$")
+    ("1", "$"),
+    ("2", "$$"),
+    ("3", "$$$"),
+    ("4", "$$$$")
 ]
 
 dropdown_food = [
-    ('Burger', 'Burger'),
-    ('Chinese', 'Chinese'),
-    ("Italian", "Italian"),
-    ("Japanese", "Japanese"),
-    ("Mexican", "Mexican"),
-    ("Thai", "Thai")
+    ('burger', 'Burger'),
+    ('chinese', 'Chinese'),
+    ("italian", "Italian"),
+    ("japanese", "Japanese"),
+    ("mexican", "Mexican"),
+    ("thai", "Thai")
 ]
 
    
 
 class FiltersCityForm(forms.Form):
-    city = forms.ChoiceField(label="Pick a city", choices=dropdown_city)
+    location = forms.ChoiceField(label="Pick a city", choices=dropdown_city)
     price = forms.ChoiceField(label="Price", choices=dropdown_prices) 
-    food = forms.ChoiceField(label="Food Type", choices=dropdown_food)
+    alias = forms.ChoiceField(label="Food Type", choices=dropdown_food)
     
 
 
 def homepage(request):
+    
     form  = FiltersCityForm(request.POST)
+    
     if request.method == 'POST':
+       
         # Fill out form with thedata they provide
         form_city = FiltersCityForm(request.POST)
+        if form_city.is_valid():
+            location = form_city.cleaned_data['location']
+            price = form_city.cleaned_data['price']
+            alias = form_city.cleaned_data['alias']
+    
+            print(location, price, alias)
+
+            header = {
+            "Authorization":  "Bearer EgNHeojg_ryrKUYzlgCaPMXU7i60GOR-Yy1qxnoYvIDNM8OEq1bfq1a5cbuiExw94-oDF86cKIGfZI73iQoXsxZYndshHdSCeqUMjCi1C-KqdY1jA2Rkw5O4OQWwWnYx"
+            }
+            response = requests.get("https://api.yelp.com/v3/businesses/search?term=food&location=" + location + "&price=" + price + "&categories=" + alias, headers=header)
+            # print(response)
+            data = response.json()
+            print(data)
+        return redirect('/swipe')
     else:
         # Make blank, empty form, for them to use
         form_city= FiltersCityForm()
     
-    context = {
-       
-        'form_city': form_city,
-       
-     }
+        context = {
+        
+            'form_city': form_city,
+        
+        }
     
 
 
-    return render(request, "homepage.html", context)
+        return render(request, "homepage.html", context)
 
 
 

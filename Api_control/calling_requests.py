@@ -21,3 +21,4 @@ pp.pprint(data)
 for x in data['businesses']:
     print(x['image_url'],"\n")
 >>>>>>> 0376ae0aea1c66ddd696e622bb25b1f55821db0e
+
