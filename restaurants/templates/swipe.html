@@ -80,6 +80,10 @@
                                 <div class="swiper-button-prev flex justify-content-center align-items-center">
                                         <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z"></path></svg></span>
                                 </div>
+                                <form method="GET" action="/swipe">
+                                    <input type="hidden" name="res_id" value="{{ res_id }}">
+                                    <input name="bad" value="bad" type="submit">
+                                </form>
                         </div>
 
                         <div class="col-md-5 featured-responsive">
@@ -131,6 +135,10 @@
                             <div class="swiper-button-next flex justify-content-center align-items-center">
                                 <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z"></path></svg></span>
                             </div>
+                            <form method="GET" action="/swipe">
+                              <input type="hidden" name="res_id" value="{{res_id}}">
+                              <input name="good" value="good" type="submit">
+                            </form>
                         </div><!-- .swiper-container -->
                 </div>
             </div>
