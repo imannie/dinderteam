@@ -3,8 +3,6 @@
 {% block content %}
 
 
-
-
 <!-- HOME PAGE -->
 <section class="slider d-flex align-items-center">
     <!-- <img src="images/slider.jpg" class="img-fluid" alt="#"> -->
@@ -24,7 +22,13 @@
 
                         <div class="col-md-10">
           
-
+                            {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
 
                     <form method= "POST" action="/">
                         {% csrf_token %}

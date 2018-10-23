@@ -5,6 +5,7 @@ from django import forms
 import glob
 import os
 from django.http import HttpResponse
+from django.contrib import messages
 
 
 
@@ -31,7 +32,7 @@ dropdown_city= [
     ("San Francisco", "San francisco"),
     ("Alameda", "Alameda"),
     ("San Jose", "San Jose"),
-    ("Daily City", "Daily City"),
+    ("Daly City", "Daly City"),
     ("Berkeley", "Berkeley"),
     ("San Leandro", "San Leandro"),
     ("Hayward", "Hayward"),
@@ -80,10 +81,14 @@ def homepage(request):
             header = {
             "Authorization":  "Bearer EgNHeojg_ryrKUYzlgCaPMXU7i60GOR-Yy1qxnoYvIDNM8OEq1bfq1a5cbuiExw94-oDF86cKIGfZI73iQoXsxZYndshHdSCeqUMjCi1C-KqdY1jA2Rkw5O4OQWwWnYx"
             }
-            response = requests.get("https://api.yelp.com/v3/businesses/search?term=food&location=" + location + "&price=" + price + "&categories=" + alias, headers=header)
+            response = requests.get("https://api.yelp.com/v3/businesses/search?term=food&radius=19000&location=" + location + "&price=" + price + "&categories=" + alias, headers=header)
             # print(response)
             data = response.json()
             print(data)
+            if (data["total"]) == 0:
+                messages.warning(request, 'No Restaurants Matching Search Criteria')
+                
+                return redirect('/')
         return redirect('/swipe')
     else:
         # Make blank, empty form, for them to use
