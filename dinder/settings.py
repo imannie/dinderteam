@@ -25,7 +25,7 @@ SECRET_KEY = 'u4k9f(x01*&b1ph4-a4t2gwla6&x^ng3rb1!a=*7(p1-_d1%-e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [glacial-beyond-36782.herokuapp.com] # rudy
 
 
 # Application definition
@@ -117,6 +117,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+
 
 STATIC_URL = '/static/'
 
