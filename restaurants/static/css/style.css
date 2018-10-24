@@ -984,8 +984,8 @@ footer {
     text-align: left;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
+.swiper-button-next form,
+.swiper-button-prev form {
     visibility: hidden;
     width: 54px;
     height: 54px;
@@ -993,16 +993,16 @@ footer {
     transition: all .35s;
 }
 
-.swiper-button-next {
+.swiper-button-next form {
     right: 100px;
-    height: auto;
-    background: #088A4B;
+    height: 100px;
+    background: #000;
 }
 
-.swiper-button-prev {
+.swiper-button-prev form {
     left: 100px;
     height: auto;
-    background: #FE2E2E;
+    background: #000;
 }
 
 .swiper-button-next:hover,
@@ -1010,15 +1010,15 @@ footer {
     opacity: 1;
 }
 
-.swiper-button-next span,
-.swiper-button-prev span {
+.swiper-button-next form,
+.swiper-button-prev form {
     display: ruby-base;
     width: 12px;
     padding-top: 6px;
 }
 
-.swiper-button-next path,
-.swiper-button-prev path {
+.swiper-button-next form,
+.swiper-button-prev form {
     fill: #fff;
 }
 
@@ -1026,8 +1026,8 @@ footer {
 
 
 @media screen and (min-width: 768px){
-    .swiper-button-next,
-    .swiper-button-prev {
+    .swiper-button-next form,
+    .swiper-button-prev  form{
         visibility: visible;
     }
 }

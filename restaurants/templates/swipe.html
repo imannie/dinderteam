@@ -13,7 +13,7 @@
         <!-- Page Title -->
         <title>Dinder Dope</title>
         <!-- Bootstrap CSS -->
-        <link href="{% static "/vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+        <link href="{% static "../vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
         <!-- Simple line Icon -->
@@ -76,30 +76,20 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                        <div class="col-md-3 features-responsive">
-                                <div class="swiper-button-prev flex justify-content-center align-items-center">
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z"></path></svg></span>
-                                </div>
-                                <form method="GET" action="/swipe">
-                                    <input type="hidden" name="res_id" value="{{ res_id }}">
-                                    <input name="bad" value="bad" type="submit">
-                                </form>
-                        </div>
-
-                        <div class="col-md-5 featured-responsive">
-                            <div class="featured-place-wrap">
-                                <div class="swiper-container hero-slider">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="hero-content flex justify-content-center align-items-center flex-column">
-                                                <a href="detail.html">
-                                                    <img src="{{image}}" class="img-fluid" alt="#">
-                                                        <div class="featured-title-box">
-                                                            <h6>{{name|title}}</h6>
-                                                            <p>Restaurant </p> <span>• </span>
-                                                            <p>{{rating}}</p> <span> • </span>
-                                                            <p>{{price}}</p>
-                                                            <ul>
+                    <div class="col-md-5 featured-responsive">
+                        <div class="featured-place-wrap">
+                            <div class="swiper-container hero-slider">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="hero-content flex justify-content-center align-items-center flex-column">
+                                            <a href="detail.html">
+                                                <img src="{{image}}" class="img-fluid" alt="#">
+                                                    <div class="featured-title-box">
+                                                        <h6>{{name|title}}</h6>
+                                                        <p>Restaurant </p> <span>• </span>
+                                                        <p>{{rating}}</p> <span> • </span>
+                                                        <p>{{price}}</p>
+                                                        <ul>
                                                                 <li><span class="icon-location-pin"></span>
                                                                     <p>{{address}}</p>
                                                                 </li>
@@ -109,41 +99,39 @@
                                                                 <li><span class="icon-link"></span>
                                                                     <p style="font-size:8px">{{url|safe}}</p>
                                                                 </li>
-                                                            </ul>
+                                                        </ul>
                                                         <div class="bottom-icons">
                                                         <div class="closed-now">NEED HOURS FROM API</div>
                                                             <span class="ti-heart"></span>
                                                             <span class="ti-bookmark"></span>
                                                         </div>
                                                     </div>
-                                                </a>
-                                            </div><!-- .hero-content -->
-                                        </div><!-- .swiper-slide -->
-
-
-
-                                        
-                                    </div><!-- .swiper-wrapper -->
-                                </div>
-                            </div>
+                                            </a>
+                                        </div><!-- .hero-content -->
+                                    </div><!-- .swiper-slide -->
+                                </div><!-- .swiper-wrapper -->
+                            </div><!-- .swiper-container -->
                         </div>
+                    </div>
 
-                                <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
-                                <!-- Add Arrows -->
-                        <div class="col-md-3 features-responsive">
-                            <div class="swiper-button-next flex justify-content-center align-items-center">
-                                <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 44"><path d="M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z"></path></svg></span>
-                            </div>
+        
+                    <div class="row justify-content-center">
+                        <div class="col-md-7 features-responsive">
                             <form method="GET" action="/swipe">
-                              <input type="hidden" name="res_id" value="{{res_id}}">
-                              <input name="good" value="good" type="submit">
+                                <input type="hidden" name="res_id" value="{{ res_id }}">
+                                <input name="bad" value="bad" type="submit" class="swiper-button-prev flex justify-content-center align-items-center">
                             </form>
-                        </div><!-- .swiper-container -->
+                        </div>
+                        <div class="col-md-7 features-responsive">
+                            <form method="GET" action="/swipe">
+                                <input type="hidden" name="res_id" value="{{res_id}}">
+                                <input name="good" value="good" type="submit" class="swiper-button-next flex justify-content-center align-items-center">
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <!--//END FIND PLACES -->
+            </section>
+            <!--//END FIND PLACES -->
 
         <!--============================= FOOTER =============================-->
         <footer class="main-block footer-bg">
