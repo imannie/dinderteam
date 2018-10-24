@@ -66,6 +66,7 @@ def homepage(request):
             response = requests.get("https://api.yelp.com/v3/businesses/search?term=food&radius=16093&location=" + location + "&price=" + price + "&categories=" + alias, headers=header)
             data = response.json()
             request.session['has_visited'] = True
+            request.session['count'] = 0 
 
             if request.session.get('has_visited'):
                 print("we in hurrrrr")
@@ -126,11 +127,16 @@ def swipe(request):
         update_good = Restaurants_info.objects.get(id = res_id)
         update_good.hold = 1
         update_good.save()
+        request.session['count'] = request.session['count'] + 1
+        print(request.session['count'])
         
     elif bad: 
         update_bad = Restaurants_info.objects.get(id = res_id)
         update_bad.hold = 0
         update_bad.save()
+
+    if request.session['count'] == 4:
+        lets_chose(request)
 
     data = str(got_one.rating)+"/5.0"
     context = {
@@ -164,9 +170,10 @@ def lets_chose(request):
 #    \_/\_/  \___/|_|  |_|\_\___/
 
     #this prints out random restaurant
-   yes_swipe= Restaurants_info.objects.all().filter(hold ="1").order_by('?')[0]
-   data = str(yes_swipe.rating)+"/5.0"
-   context = {
+    yes_swipe= Restaurants_info.objects.all().filter(hold ="1").order_by('?')[0]
+    data = str(yes_swipe.rating)+"/5.0"
+    print("we are here")
+    context = {
         "name":  yes_swipe.name,
         "price": yes_swipe.price,
         "rating":data,
@@ -176,4 +183,5 @@ def lets_chose(request):
         "address":yes_swipe.address,
         "url":yes_swipe.url,
     }
+    return render(request, "swipe.html",context)
    
