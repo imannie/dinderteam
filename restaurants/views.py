@@ -116,7 +116,7 @@ def swipe(request):
 
     got_one = Restaurants_info.objects.filter(session_key = key_check).order_by('?')[0]
     if got_one.selected == "1":
-        while got_one.selected = "1":
+        while got_one.selected == "1":
             got_one = Restaurants_info.objects.filter(session_key = key_check).order_by('?')[0]
 
     seen = Restaurants_info.objects.filter(name = got_one.name).first()
