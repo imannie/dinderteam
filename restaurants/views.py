@@ -79,7 +79,6 @@ def homepage(request):
                     phone = item['phone'], 
                     address = item["location"]['address1'], 
                     session_key = request.session.session_key,
-                    selected = 0;
                 )
 
             if data["total"] == 0:
