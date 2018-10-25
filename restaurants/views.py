@@ -58,31 +58,30 @@ def homepage(request):
             location = form_city.cleaned_data['location']
             price = form_city.cleaned_data['price']
             alias = form_city.cleaned_data['alias']
-    
+
+            Restaurants_info.objects.filter(session_key=request.session.session_key).delete()
+            #Michael added this to delete the current sessions existing data if we come back to home page
 
             header = {
             "Authorization":  "Bearer EgNHeojg_ryrKUYzlgCaPMXU7i60GOR-Yy1qxnoYvIDNM8OEq1bfq1a5cbuiExw94-oDF86cKIGfZI73iQoXsxZYndshHdSCeqUMjCi1C-KqdY1jA2Rkw5O4OQWwWnYx"
             }
             response = requests.get("https://api.yelp.com/v3/businesses/search?term=food&radius=16093&location=" + location + "&price=" + price + "&categories=" + alias, headers=header)
             data = response.json()
-            request.session['has_visited'] = True
             request.session['count'] = 0 
+           
+            for item in data['businesses']:
+                restaurant = Restaurants_info.objects.create(
+                    name = item['name'],
+                    price = item['price'],
+                    rating = item['rating'],
+                    image = item['image_url'], 
+                    url = item['url'], 
+                    phone = item['phone'], 
+                    address = item["location"]['address1'], 
+                    session_key = request.session.session_key,
+                )
 
-            if request.session.get('has_visited'):
-                print("we in hurrrrr")
-                for item in data['businesses']:
-                    restaurant = Restaurants_info.objects.create(
-                        name = item['name'],
-                        price = item['price'],
-                        rating = item['rating'],
-                        image = item['image_url'], 
-                        url = item['url'], 
-                        phone = item['phone'], 
-                        address = item["location"]['address1'], 
-                        session_key = request.session.session_key,
-                    )
-            request.session['has_visited'] = False
-            if (data["total"]) == 0:
+            if data["total"] == 0:
                 messages.warning(request, 'No Restaurants Matching Search Criteria')
 
                 return redirect('/')
@@ -114,11 +113,13 @@ def swipe(request):
   
     key_check = request.session.session_key
 
-    got_one = Restaurants_info.objects.filter(session_key = key_check).order_by('?')[0]
-    if got_one.selected == "1":
-        while got_one.selected == "1":
-            got_one = Restaurants_info.objects.filter(session_key = key_check).order_by('?')[0]
+    relevant_restaurants = Restaurants_info.objects.filter(session_key = key_check)
+    if relevant_restaurants.count() < 1:
+        messages.warning(request, 'No Restaurants in Database')
+        
+        return redirect('/')
 
+    got_one = relevant_restaurants.filter(selected = "0").order_by('?')[0]
     seen = Restaurants_info.objects.filter(name = got_one.name).first()
     seen.selected = 1
     seen.save()
@@ -132,13 +133,12 @@ def swipe(request):
         update_good.hold = 1
         update_good.save()
         request.session['count'] = request.session['count'] + 1
-        print(request.session['count'])
-        
     elif bad: 
         update_bad = Restaurants_info.objects.get(id = res_id)
         update_bad.hold = 0
         update_bad.save()
 
+#TODO: change to count the # for rows in hold with 1 
     if request.session['count'] == 4:
         lets_chose(request)
 
