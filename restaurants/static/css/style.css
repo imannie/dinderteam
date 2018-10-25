@@ -11,7 +11,7 @@ body {
 
 h1 {
   font-size: 72px;
-  color: #fff;
+  color: #yellowgreen;
   font-weight: 300; }
   @media (max-width: 1200px) {
     h1 {
@@ -50,7 +50,7 @@ p {
 
 .main-block {
   padding: 90px 0;
-  background: url("../images/bg-pattern.png") #f3f4f7;;
+  background: url("../images/bg-pattern.png") #f3f4f7;
 
 }
   @media (max-width: 768px) {
@@ -59,7 +59,8 @@ p {
 
 
 .footer-bg {
-  background: #141e30; }
+  background: #141e30;
+  padding: 90px 0; }
 
 /* ==============================================================
    HEADER
