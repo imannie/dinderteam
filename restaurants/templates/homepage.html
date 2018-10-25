@@ -29,13 +29,12 @@
                     {% endfor %}
                 {% endif %}
           
-            <form class="form-wrap mt-4" method= "POST" action="/">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <input type="text" placeholder=" {% csrf_token %} " class="btn-group1">
-                                <input type="text" placeholder=" {{ form_city }} " class="btn-group2">
-                                <button type="submit" class="btn btn-form" ><span class="icon-magnifier search-icon"></span>Submit<i class="pe-7s-angle-right"></i></i></button> 
-                            </div>
-                        </form>
+            <form method= "POST" action="/">
+                           {% csrf_token %}
+                           {{form_city}}
+                           <button> Submit</button>
+                           </form>
+
                             
                             <div class="slider-link">
                                 <a href="#">Recently Added</a>
