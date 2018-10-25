@@ -72,8 +72,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'dinder.wsgi.application'
 
 
-Database
-https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+# Database
+# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
