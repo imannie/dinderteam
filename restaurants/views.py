@@ -113,18 +113,14 @@ def swipe(request):
     seen.save()
 
     #if an object is liked vs disliked -- res_id used to make sure we are updating the correct object
-    good = request.POST.get('good')
+    good = request.GET.get('good')
     bad = request.GET.get('bad')
     res_id = request.GET.get("res_id")
-    print("if this work",res_id)
-    print("this is good",good)
-    print("this is bad",bad)
     if good: 
         update_good = Restaurants_info.objects.get(id = res_id)
         update_good.hold = 1
         update_good.save()
         request.session['count'] = request.session['count'] + 1
-        print("checking")
     elif bad: 
         update_bad = Restaurants_info.objects.get(id = res_id)
         update_bad.hold = 0
