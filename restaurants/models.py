@@ -8,7 +8,7 @@ class Restaurants_info(models.Model):
     rating = models.CharField(max_length=300)
     image = models.CharField(max_length=300)
     hold = models.CharField(max_length=300)
-    selected = models.CharField(max_length=300,default="")
+    selected = models.CharField(max_length=300,default="0")
     url = models.CharField(max_length=1000,default="") 
     phone = models.CharField(max_length=300,default="")
     address = models.CharField(max_length=500, default="")

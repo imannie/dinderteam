@@ -1,26 +1,25 @@
 from django.shortcuts import render, redirect
-import requests
-import sqlite3
-from .models import Restaurants_info
-import random
-from django import forms
-import glob
-import os
 from django.conf import settings
 from django.http import HttpResponse
-from django import forms
 from django.contrib import messages
+from django import forms
+from .models import Restaurants_info
+import requests
+import sqlite3
+# import random
+# import glob
+# import os
 
-# start of Jordan's drop-down code
 dropdown_city= [
     ('Oakland', "Oakland"),
     ("San Francisco", "San francisco"),
     ("Alameda", "Alameda"),
     ("San Jose", "San Jose"),
-    ("Daily City", "Daily City"),
+    ("Daly City", "Daly City"),
     ("Berkeley", "Berkeley"),
     ("San Leandro", "San Leandro"),
     ("Hayward", "Hayward"),
+    ("Santa Monica", "Santa Monica"),
 
 ]
 dropdown_prices = [
@@ -60,14 +59,14 @@ def homepage(request):
             alias = form_city.cleaned_data['alias']
 
             Restaurants_info.objects.filter(session_key=request.session.session_key).delete()
-            #Michael added this to delete the current sessions existing data if we come back to home page
+            request.session["count"] = 0
+            #deletes the users previous queries & set the count back to 0
 
             header = {
             "Authorization":  "Bearer EgNHeojg_ryrKUYzlgCaPMXU7i60GOR-Yy1qxnoYvIDNM8OEq1bfq1a5cbuiExw94-oDF86cKIGfZI73iQoXsxZYndshHdSCeqUMjCi1C-KqdY1jA2Rkw5O4OQWwWnYx"
             }
             response = requests.get("https://api.yelp.com/v3/businesses/search?term=food&radius=16093&location=" + location + "&price=" + price + "&categories=" + alias, headers=header)
             data = response.json()
-            request.session['count'] = 0 
            
             for item in data['businesses']:
                 restaurant = Restaurants_info.objects.create(
@@ -80,7 +79,7 @@ def homepage(request):
                     address = item["location"]['address1'], 
                     session_key = request.session.session_key,
                 )
-
+                #checks to make sure the params have found something and if not responds with error and sends user to homepage
             if data["total"] == 0:
                 messages.warning(request, 'No Restaurants Matching Search Criteria')
 
@@ -92,39 +91,28 @@ def homepage(request):
         form_city= FiltersCityForm()
     
         context = {
-        
             'form_city': form_city,
-        
         }
-    
         return render(request, "homepage.html", context)
-
-def details(request):
-    # form  = FiltersForm(request.POST)
-    # if request.method == 'POST':
-    #     if form.is_valid():
-    #         return redirect("/swipe/")
-    context = {}
-
-    return render(request, "details.html", context)
-
 
 def swipe(request):
   
     key_check = request.session.session_key
-
+    
     relevant_restaurants = Restaurants_info.objects.filter(session_key = key_check)
+   # checks to make sure db has something in it 
     if relevant_restaurants.count() < 1:
         messages.warning(request, 'No Restaurants in Database')
         
         return redirect('/')
 
+    #selects an object from the db at random and marks selected to know we have seen it 
     got_one = relevant_restaurants.filter(selected = "0").order_by('?')[0]
     seen = Restaurants_info.objects.filter(name = got_one.name).first()
     seen.selected = 1
     seen.save()
 
-
+    #if an object is liked vs disliked -- res_id used to make sure we are updating the correct object
     good = request.GET.get('good')
     bad = request.GET.get('bad')
     res_id = request.GET.get("res_id")
@@ -164,19 +152,11 @@ def lets_chose(request):
 #   | | |  _  || || |\  | |_| |___) |   | || |_| | | |_| | |_| |
 #   |_| |_| |_|___|_| \_|\____|____/    |_| \___/  |____/ \___/
 
-   #we should add a start over button that redirects to the swipe page or to home
-   # we should also give them the ability to see the rest of the list they swiped yes on  
+   #TODO:we should add a start over button that redirects to the swipe page or to home
+   #TODO: we should also give them the ability to see the rest of the list they swiped yes on  
 
-#    __        _____       _
-# \ \      / / _ \ _ __| | _____
-#  \ \ /\ / / | | | '__| |/ / __|
-#   \ V  V /| |_| | |  |   <\__ \
-#    \_/\_/  \___/|_|  |_|\_\___/
-
-    #this prints out random restaurant
     yes_swipe= Restaurants_info.objects.all().filter(hold ="1").order_by('?')[0]
     data = str(yes_swipe.rating)+"/5.0"
-    print("we are here")
     context = {
         "name":  yes_swipe.name,
         "price": yes_swipe.price,

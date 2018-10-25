@@ -11,7 +11,7 @@
         <meta name="description" content="#">
         <meta name="keywords" content="#">
         <!-- Page Title -->
-        <title>Dinder Dope</title>
+        <title>Dinder</title>
         <!-- Bootstrap CSS -->
         <link href="{% static "../vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
         <!-- Google Fonts -->
@@ -37,16 +37,11 @@
                         <div class="col-md-12">
                             <nav class="navbar navbar-expand-lg navbar-light">
                                 <a class="navbar-brand" href="home.html">Dinder</a>
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="icon-menu"></span>
-                </button>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="icon-menu"></span></button>
                                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                                     <ul class="navbar-nav">
                                         <li class="nav-item dropdown">
-                                            <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Explore
-                        <span class="icon-arrow-down"></span>
-                    </a>
+                                            <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explore<span class="icon-arrow-down"></span> </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                                 <a class="dropdown-item" href="home.html#category">By Category</a>
                                                 <a class="dropdown-item" href="listing.html">By Listing</a>
@@ -97,7 +92,7 @@
                                                                     <p>{{phone}}</p>
                                                                 </li>
                                                                 <li><span class="icon-link"></span>
-                                                                    <p style="font-size:8px">{{url|safe}}</p>
+                                                                    <p style="font-size:8px">{{url}}</p>
                                                                 </li>
                                                         </ul>
                                                         <div class="bottom-icons">
@@ -124,8 +119,9 @@
                         </div>
                         <div class="col-md-7 features-responsive">
                             <form method="GET" action="/swipe">
-                                <input type="hidden" name="res_id" value="{{res_id}}">
-                                <input name="good" value="good" type="submit" class="swiper-button-next flex justify-content-center align-items-center">
+                                <input type="hidden" name="res_id" value="{{res_id}}"/>
+                                <input name="good" value="good" type="submit" class="swiper-button-next"/> 
+                                <!-- <button type="submit">Okay</button> -->
                             </form>
                         </div>
                     </div>
@@ -153,7 +149,7 @@
         <script src='{% static '/js/popper.min.js' %}'></script>
         <script src='{% static '/js/bootstrap.min.js' %}'></script>
         <script src='{% static '/js/jquery.js' %}'></script>
-        <script src='{% static '/js/swiper.min.js' %}'></script>
+        <!-- <script src='{% static '/js/swiper.min.js' %}'></script> -->
         <script src='{% static '/js/custom.js' %}'></script>
 
         <script>
