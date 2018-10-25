@@ -79,12 +79,17 @@ def homepage(request):
                     phone = item['phone'], 
                     address = item["location"]['address1'], 
                     session_key = request.session.session_key,
+                    selected = 0;
                 )
 
             if data["total"] == 0:
                 messages.warning(request, 'No Restaurants Matching Search Criteria')
 
                 return redirect('/')
+
+            # seen = Restaurants_info.objects.filter(name = got_one.name).first()
+            # seen.selected = 0
+            # seen.save()
 
         return redirect('/swipe')
     else:
