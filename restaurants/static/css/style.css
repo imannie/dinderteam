@@ -7,7 +7,8 @@ Author: Surjith S M
    GLOBAL STYLES
    ============================================================== */
 body {
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  color: white; }
 
 h1 {
   font-size: 72px;
@@ -62,6 +63,17 @@ p {
   background: #141e30;
   padding: 90px 0; }
 
+.control-label {
+  color: #fff;
+  font-size: large;
+  font-family: 'Roboto' sans-serif;
+  font-size: 20px;
+
+
+}
+
+
+
 /* ==============================================================
    HEADER
    ============================================================== */
@@ -80,7 +92,8 @@ p {
   padding: .5rem 0; }
 
 .navbar-brand {
-  font-size: 31px; }
+  font-size: 41px;
+  }
 
 .navbar-light .navbar-brand {
   color: #fff; }
@@ -144,7 +157,8 @@ p {
 .dropdown-menu {
   background: #030303; }
 
-.dropdown-item {
+.dropdown-item,
+.button, select {
   color: #aaaaaa;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
@@ -184,6 +198,13 @@ p {
 
 .slider-title_box {
   text-align: center; }
+
+.slider-content_wrap h1 {
+  color: yellowgreen;
+  margin: 50px 0;
+  font-size: 50px;
+  font-family: fantasy;
+}
 
 .slider-content_wrap h5 {
   color: #909090;
@@ -281,7 +302,7 @@ p {
   margin: 0 0 50px; }
   @media (max-width: 768px) {
     .styled-heading {
-      margin: 0 0 30px; } }
+      margin: 20 0 30px; } }
   .styled-heading h3 {
     position: relative;
     padding: 0 0 23px; }
@@ -436,71 +457,8 @@ p {
       -webkit-box-shadow: none;
       box-shadow: none; }
 
-/* ==============================================================
-   CATEGORIES
-   ============================================================== */
-@media (max-width: 992px) {
-  .category-responsive {
-    max-width: 50%;
-    -webkit-box-flex: 0;
-    -webkit-flex: 0 0 50%;
-    -ms-flex: 0 0 50%;
-    flex: 0 0 50%; } }
 
-@media (max-width: 576px) {
-  .category-responsive {
-    max-width: 100%;
-    -webkit-box-flex: 0;
-    -webkit-flex: 0 0 100%;
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100%; } }
 
-.category-wrap:hover {
-  text-decoration: none; }
-
-.category-wrap:hover .category-block {
-  background: #f34e79;
-  -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s; }
-
-.category-wrap:hover .category-img path {
-  text-decoration: none;
-  fill: #fff;
-  -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s; }
-
-.category-wrap:hover .category-block h6 {
-  color: #fff;
-  text-decoration: none; }
-
-.category-block {
-  margin: 0 auto;
-  text-align: center;
-  border: 1px solid #e5e7ef;
-  padding: 30px;
-  margin: 0 0 30px; }
-  .category-block h6 {
-    color: #3e434b;
-    margin: 10px 0 0; }
-
-.category-img {
-  width: 64px;
-  height: 64px; }
-
-/* ==============================================================
-   ADD LISTING
-   ============================================================== */
-.add-listing-wrap {
-  text-align: center;
-  margin: 0 0 36px; }
-  .add-listing-wrap h2 {
-    font-weight: 300; }
-  .add-listing-wrap p {
-    font-size: 22px;
-    font-weight: 300;
-    color: #737882; }
 
 /* ==============================================================
    FOOTER
@@ -1032,3 +990,6 @@ footer {
         visibility: visible;
     }
 }
+
+
+
