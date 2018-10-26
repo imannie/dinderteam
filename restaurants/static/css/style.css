@@ -340,10 +340,10 @@ p {
     transform: translateY(-2px);
     -webkit-box-shadow: 0px 3px 40px 0 rgba(206, 205, 205, 0.3);
     box-shadow: 0px 3px 40px 0 rgba(206, 205, 205, 0.3); }
-  .featured-place-wrap a {
+  .featured-place-wrap h6 {
     display: block;
     text-decoration: none;
-    color: #000; }
+    color: black; }
   .featured-place-wrap img {
     width: 100%; }
 
