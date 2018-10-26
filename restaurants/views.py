@@ -69,6 +69,11 @@ def homepage(request):
             data = response.json()
            
             for item in data['businesses']:
+                addy = item["location"]['address1']
+                city = item["location"]['city']
+                state = item["location"]['state']
+                zip_code = item["location"]['zip_code']
+                address = addy+", "+city+", "+state+" "+zip_code
                 restaurant = Restaurants_info.objects.create(
                     name = item['name'],
                     price = item['price'],
@@ -76,13 +81,12 @@ def homepage(request):
                     image = item['image_url'], 
                     url = item['url'], 
                     phone = item['phone'], 
-                    address = item["location"]['address1'], 
+                    address = address, 
                     session_key = request.session.session_key,
                 )
                 #checks to make sure the params have found something and if not responds with error and sends user to homepage
             if data["total"] == 0:
                 messages.warning(request, 'No Restaurants Matching Search Criteria')
-
                 return redirect('/')
 
         return redirect('/swipe')
@@ -102,17 +106,27 @@ def swipe(request):
     relevant_restaurants = Restaurants_info.objects.filter(session_key = key_check)
    # checks to make sure db has something in it 
     if relevant_restaurants.count() < 1:
-        messages.warning(request, 'No Restaurants in Database')
-        
+        messages.warning(request, 'No Restaurants in Database') 
         return redirect('/')
 
+    checkTheList = relevant_restaurants.filter(selected = "0")
+    print(checkTheList)
+    if checkTheList.count() == 0:
+        print("okay")
+        return redirect("/winner")
+
     #selects an object from the db at random and marks selected to know we have seen it 
-    got_one = relevant_restaurants.filter(selected = "0").order_by('?')[0]
+    got_one = checkTheList.order_by('?')[0]
     seen = Restaurants_info.objects.filter(name = got_one.name).first()
     seen.selected = 1
     seen.save()
 
-    #if an object is liked vs disliked -- res_id used to make sure we are updating the correct object
+    #in case duplicates exist - this makes sure they get seen as well
+    all_seen = Restaurants_info.objects.all().filter(name = got_one.name).last()
+    all_seen.selected = 1
+    all_seen.save()
+
+#if an object is liked vs disliked -- res_id used to make sure we are updating the correct object
     good = request.GET.get('good')
     bad = request.GET.get('bad')
     res_id = request.GET.get("res_id")
@@ -126,9 +140,10 @@ def swipe(request):
         update_bad.hold = 0
         update_bad.save()
 
-#TODO: change to count the # for rows in hold with 1 
-    if request.session['count'] == 4:
-        lets_chose(request)
+# #TODO: change to count the # for rows in hold with 1 
+    checkCount = Restaurants_info.objects.all().filter(hold = "1").count()
+    if checkCount == 4:
+        return redirect("winner/")
 
     data = str(got_one.rating)+"/5.0"
     context = {
@@ -167,5 +182,5 @@ def lets_chose(request):
         "address":yes_swipe.address,
         "url":yes_swipe.url,
     }
-    return render(request, "swipe.html",context)
+    return render(request, "winner.html",context)
    
