@@ -157,8 +157,9 @@ def swipe(request):
 
 
 def lets_chose(request):
-
-    yes_swipe = Restaurants_info.objects.all().filter(hold ="1").order_by('?')[0]
+    key_check = request.session.session_key
+    
+    yes_swipe = Restaurants_info.objects.all().filter(hold ="1", session_key = key_check).order_by('?')[0]
     data = str(yes_swipe.rating)+"/5.0"
     context = {
         "name":  yes_swipe.name,
