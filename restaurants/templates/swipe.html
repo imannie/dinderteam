@@ -80,11 +80,18 @@
                                                                     <p style="font-size:8px">{{url}}</p>
                                                                 </li>
                                                         </ul>
-                                                        <div class="bottom-icons">
+                                                        <!-- <div class="bottom-icons">
                                                         <div class="closed-now">NEED HOURS FROM API</div>
                                                             <span class="ti-heart"></span>
                                                             <span class="ti-bookmark"></span>
+                                                        </div> -->
+                                                        {% if messages %}
+                                                        {% for message in messages %}
+                                                        <div class="alert alert-{{ message.tags }}">
+                                                            {{ message }}
                                                         </div>
+                                                        {% endfor %}
+                                                        {% endif %}
                                                     </div>
                                             </a>
                                         </div><!-- .hero-content -->
