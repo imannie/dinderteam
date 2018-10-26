@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
 {% block content %}
 
 
@@ -26,18 +26,16 @@
                     </div>
                     {% endfor %}
                 {% endif %}
-          
+
             <form class="control-label" method= "POST" action="/">
                 {% csrf_token %}
                 {{form_city}}
             <br/><br/>
-            <button style="background-color: rgb(0, 76, 102); color:#ffffff;"> Submit</button>
+            <button type="submit" class="btn btn-form" ><span class="icon-magnifier search-icon"></span>GO DIND<i class="pe-7s-angle-right"></i></button>
             </form>
 
-                            
-                            <div class="slider-link">
-                                <a href="#">Recently Added</a>
-                            </div>
+
+
                         </div>
                     </div>
                 </div>

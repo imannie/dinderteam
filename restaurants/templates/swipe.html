@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,19 +13,20 @@
         <!-- Page Title -->
         <title>Dinder</title>
         <!-- Bootstrap CSS -->
-        <link href="{% static "../vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+        <link href="{% static '/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
         <!-- Simple line Icon -->
-        <link href="{% static "/css/simple-line-icons.css" %} " rel="stylesheet" >
+        <link href="{% static '/css/simple-line-icons.css' %}" rel="stylesheet" >
         <!-- Themify Icon -->
-        <link  href="{% static "/css/themify-icons.css" &}" rel="stylesheet">
+        <link  href="{% static '/css/themify-icons.css' %}" rel="stylesheet">
         <!-- Hover Effects -->
-        <link href="{% static "/css/set1.css" %} " rel="stylesheet" >
+        <link href="{% static '/css/set1.css' %}" rel="stylesheet" >
         <!-- Swiper CSS -->
-        <link href="{% static "/css/swiper.css" %} "  rel="stylesheet" >
+        <link href="{% static '/css/swiper.css' %}"  rel="stylesheet" >
         <!-- Main CSS -->
-        <link  href="{% static "/css/style.css" %} " rel="stylesheet">
+        <link  href="{% static '/css/style.css' %}" rel="stylesheet">
+
     </head>
 
     <body>
@@ -36,8 +37,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <nav class="navbar navbar-expand-lg navbar-light">
-                                <a class="navbar-brand" href="home.html">Dinder</a>
-                                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="icon-menu"></span></button>   
+                                <a class="navbar-brand" href="homepage.html">Dinder</a>
+                                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="icon-menu"></span></button>
                             </nav>
                         </div>
                     </div>
@@ -62,7 +63,7 @@
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <div class="hero-content flex justify-content-center align-items-center flex-column">
-                                            <a href="detail.html">
+                                            
                                                 <img src="{{image}}" class="img-fluid" alt="#">
                                                     <div class="featured-title-box">
                                                         <h6>{{name|title}}</h6>
@@ -86,7 +87,7 @@
                                                             <span class="ti-bookmark"></span>
                                                         </div>
                                                     </div>
-                                            </a>
+                                            
                                         </div><!-- .hero-content -->
                                     </div><!-- .swiper-slide -->
                                 </div><!-- .swiper-wrapper -->
@@ -94,7 +95,7 @@
                         </div>
                     </div>
 
-        
+                    <div class="swiper-pagination"></div>
                     <div class="row justify-content-center">
                         <div class="col-md-7 features-responsive">
                             <form method="GET" action="/swipe">
@@ -105,13 +106,14 @@
                         <div class="col-md-7 features-responsive">
                             <form method="GET" action="/swipe">
                                 <input type="hidden" name="res_id" value="{{res_id}}"/>
-                                <input name="good" value="good" type="submit" class="swiper-button-next"/> 
+                                <input name="good" value="good" type="submit" class="swiper-button-next"/>
                                 <!-- <button type="submit">Okay</button> -->
                             </form>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
             <!--//END FIND PLACES -->
 
         <!--============================= FOOTER =============================-->
@@ -120,7 +122,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="copyright">
-                            <p>Copyright &copy; 2018 . All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="home.html" target="_blank">Dinder Team</a></p>
+                            <p>Copyright &copy; 2018 . All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="homepage.html" target="_blank">Dinder Team</a></p>
                         </div>
                     </div>
                 </div>
@@ -130,12 +132,12 @@
 
         <!-- jQuery, Bootstrap JS. -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src='{% static '/js/jquery-3.2.1.min.js' %}'></script>
-        <script src='{% static '/js/popper.min.js' %}'></script>
-        <script src='{% static '/js/bootstrap.min.js' %}'></script>
-        <script src='{% static '/js/jquery.js' %}'></script>
+        <script src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static '/js/popper.min.js' %}"></script>
+        <script src="{% static '/js/bootstrap.min.js' %}"></script>
+        <script src="{% static '/js/jquery.js' %}"></script>
         <!-- <script src='{% static '/js/swiper.min.js' %}'></script> -->
-        <script src='{% static '/js/custom.js' %}'></script>
+        <script src="{% static '/js/custom.js' %}"></script>
 
         <script>
             $(window).scroll(function() {
