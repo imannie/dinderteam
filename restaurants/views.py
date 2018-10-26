@@ -106,7 +106,7 @@ def swipe(request):
         return redirect('/')
 
     # makes sure we didnt run out of options to display
-    checkTheList = relevant_restaurants.filter(selected = "0",session_key = key_check  )
+    checkTheList = relevant_restaurants.filter(selected = "0",session_key = key_check )
     if checkTheList.count() == 0:
         print("okay")
         return redirect("/winner")
@@ -137,8 +137,7 @@ def swipe(request):
 
 
     checkCount = Restaurants_info.objects.all().filter(hold = "1",session_key = key_check).count()
-    print("this is the count",checkCount)
-    if checkCount == 4:
+    if checkCount == 10:
         return redirect("winner/")
 
     data = str(got_one.rating)+"/5.0"
