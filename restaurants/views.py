@@ -27,7 +27,7 @@ dropdown_prices = [
 ]
 
 dropdown_food = [
-    ('burger', 'Burger'),
+    ('burgers', 'Burgers'),
     ('chinese', 'Chinese'),
     ("italian", "Italian"),
     ("japanese", "Japanese"),
@@ -54,7 +54,8 @@ def homepage(request):
             location = form_city.cleaned_data['location']
             price = form_city.cleaned_data['price']
             alias = form_city.cleaned_data['alias']
-
+            
+            print(location, price, alias)
             #deletes the users previous queries 
             Restaurants_info.objects.filter(session_key=request.session.session_key).delete()
 
@@ -63,7 +64,7 @@ def homepage(request):
             }
             response = requests.get("https://api.yelp.com/v3/businesses/search?term=food&radius=16093&location=" + location + "&price=" + price + "&categories=" + alias, headers=header)
             data = response.json()
-           
+            # print(data)
             for item in data['businesses']:
                 addy = item["location"]['address1']
                 city = item["location"]['city']
