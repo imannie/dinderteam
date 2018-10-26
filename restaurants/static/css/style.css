@@ -172,7 +172,7 @@ p {
   padding: 0 8px 0 0; }
 
 .slider {
-  background: url(../images/IMG_4509.jpg) no-repeat;
+  background: url(../images/sliderr.jpg) no-repeat;
   background-size: cover;
   min-height: 800px; }
   @media (max-width: 992px) {
@@ -340,10 +340,10 @@ p {
     transform: translateY(-2px);
     -webkit-box-shadow: 0px 3px 40px 0 rgba(206, 205, 205, 0.3);
     box-shadow: 0px 3px 40px 0 rgba(206, 205, 205, 0.3); }
-  .featured-place-wrap a {
+  .featured-place-wrap h6 {
     display: block;
     text-decoration: none;
-    color: #000; }
+    color: black; }
   .featured-place-wrap img {
     width: 100%; }
 

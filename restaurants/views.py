@@ -6,9 +6,6 @@ from django import forms
 from .models import Restaurants_info
 import requests
 import sqlite3
-# import random
-# import glob
-# import os
 
 dropdown_city= [
     ('Oakland', "Oakland"),
@@ -58,9 +55,8 @@ def homepage(request):
             price = form_city.cleaned_data['price']
             alias = form_city.cleaned_data['alias']
 
+            #deletes the users previous queries 
             Restaurants_info.objects.filter(session_key=request.session.session_key).delete()
-            request.session["count"] = 0
-            #deletes the users previous queries & set the count back to 0
 
             header = {
             "Authorization":  "Bearer EgNHeojg_ryrKUYzlgCaPMXU7i60GOR-Yy1qxnoYvIDNM8OEq1bfq1a5cbuiExw94-oDF86cKIGfZI73iQoXsxZYndshHdSCeqUMjCi1C-KqdY1jA2Rkw5O4OQWwWnYx"
@@ -109,8 +105,8 @@ def swipe(request):
         messages.warning(request, 'No Restaurants in Database') 
         return redirect('/')
 
+    # makes sure we didnt run out of options to display
     checkTheList = relevant_restaurants.filter(selected = "0")
-    print(checkTheList)
     if checkTheList.count() == 0:
         print("okay")
         return redirect("/winner")
@@ -134,14 +130,14 @@ def swipe(request):
         update_good = Restaurants_info.objects.get(id = res_id)
         update_good.hold = 1
         update_good.save()
-        request.session['count'] = request.session['count'] + 1
     elif bad: 
         update_bad = Restaurants_info.objects.get(id = res_id)
         update_bad.hold = 0
         update_bad.save()
 
-# #TODO: change to count the # for rows in hold with 1 
-    checkCount = Restaurants_info.objects.all().filter(hold = "1").count()
+
+    checkCount = Restaurants_info.objects.all().filter(hold = "1",session_key = key_check).count()
+    print("this is the count",checkCount)
     if checkCount == 4:
         return redirect("winner/")
 
@@ -161,16 +157,8 @@ def swipe(request):
 
 
 def lets_chose(request):
-#      _____ _   _ ___ _   _  ____ ____    _____ ___    ____   ___
-# |_   _| | | |_ _| \ | |/ ___/ ___|  |_   _/ _ \  |  _ \ / _ \
-#   | | | |_| || ||  \| | |  _\___ \    | || | | | | | | | | | |
-#   | | |  _  || || |\  | |_| |___) |   | || |_| | | |_| | |_| |
-#   |_| |_| |_|___|_| \_|\____|____/    |_| \___/  |____/ \___/
 
-   #TODO:we should add a start over button that redirects to the swipe page or to home
-   #TODO: we should also give them the ability to see the rest of the list they swiped yes on  
-
-    yes_swipe= Restaurants_info.objects.all().filter(hold ="1").order_by('?')[0]
+    yes_swipe = Restaurants_info.objects.all().filter(hold ="1").order_by('?')[0]
     data = str(yes_swipe.rating)+"/5.0"
     context = {
         "name":  yes_swipe.name,
