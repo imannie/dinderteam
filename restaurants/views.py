@@ -145,7 +145,7 @@ def swipe(request):
 
     checkCount = Restaurants_info.objects.all().filter(hold = "1",session_key = key_check).count()
     if checkCount == 4:
-        return redirect("winner/")
+        return redirect("/winner")
 
     data = str(got_one.rating)+"/5.0"
     context = {

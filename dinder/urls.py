@@ -6,6 +6,6 @@ from restaurants import views
 urlpatterns = [
     path("", views.homepage),
     path('swipe/',views.swipe),
-    path("swipe/winner/",views.lets_chose)
+    path("winner/",views.lets_chose)
     
 ]
