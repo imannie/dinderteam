@@ -84,6 +84,12 @@ def homepage(request):
                 #checks to make sure the params have found something and if not responds with error and sends user to homepage
             if data["total"] == 0:
                 messages.warning(request, 'No Restaurants Matching Search Criteria')
+            elif data["total"] == 1:
+                messages.warning(request, 'No Restaurants Matching Search Criteria')
+            elif data["total"] == 2:
+                messages.warning(request, 'No Restaurants Matching Search Criteria')
+            elif data["total"] == 3:
+                messages.warning(request, 'No Restaurants Matching Search Criteria')
                 return redirect('/')
 
         return redirect('/swipe')
@@ -138,7 +144,7 @@ def swipe(request):
 
 
     checkCount = Restaurants_info.objects.all().filter(hold = "1",session_key = key_check).count()
-    if checkCount == 10:
+    if checkCount == 4:
         return redirect("winner/")
 
     data = str(got_one.rating)+"/5.0"
