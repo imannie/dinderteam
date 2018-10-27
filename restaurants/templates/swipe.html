@@ -1,8 +1,50 @@
-
-{% extends "base.html" %}
 {% load static i18n %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
 
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="">
+        <meta name="description" content="#">
+        <meta name="keywords" content="#">
+        <!-- Page Title -->
+        <title>Dinder</title>
+        <!-- Bootstrap CSS -->
+        <link href="{% static '/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
+        <!-- Simple line Icon -->
+        <link href="{% static '/css/simple-line-icons.css' %}" rel="stylesheet" >
+        <!-- Themify Icon -->
+        <link  href="{% static '/css/themify-icons.css' %}" rel="stylesheet">
+        <!-- Hover Effects -->
+        <link href="{% static '/css/set1.css' %}" rel="stylesheet" >
+        <!-- Swiper CSS -->
+        <link href="{% static '/css/swiper.css' %}"  rel="stylesheet" >
+        <!-- Main CSS -->
+        <link  href="{% static '/css/style.css' %}" rel="stylesheet">
+
+    </head>
+
+    <body>
+        <!--============================= HEADER =============================-->
+        <div class="nav-menu">
+            <div class="bg transition">
+                <div class="container-fluid fixed">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nav class="navbar navbar-expand-lg navbar-light">
+                                <a class="navbar-brand" href="homepage.html">Dinder</a>
+                                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="icon-menu"></span></button>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 <!--============================= FIND PLACES =============================-->
         <section class="slider d-flex align-items-center">
@@ -10,7 +52,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-5">
                         <div class="styled-heading">
-                            <h3>Swiping to Dind</h3>
+                            <h3>Swipping to Dind</h3>
                         </div>
                     </div>
                 </div>
@@ -64,13 +106,13 @@
                         <div class="col-md-7 features-responsive">
                             <form method="GET" action="/swipe">
                                 <input type="hidden" name="res_id" value="{{ res_id }}">
-                                <input name="bad" value="bad" type="submit" class="swiper-button-prev">
+                                <input name="bad" value="No" type="submit" class="swiper-button-prev">
                             </form>
                         </div>
                         <div class="col-md-7 features-responsive">
                             <form method="GET" action="/swipe">
                                 <input type="hidden" name="res_id" value="{{res_id}}"/>
-                                <input name="good" value="good" type="submit" class="swiper-button-next"/>
+                                <input name="good" value="Maybe" type="submit" class="swiper-button-next"/>
                                 <!-- <button type="submit">Okay</button> -->
                             </form>
                         </div>
@@ -81,5 +123,42 @@
             <!--//END FIND PLACES -->
 
         <!--============================= FOOTER =============================-->
-     
-{% endblock %}
+        <footer class="main-block footer-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            <p>Copyright &copy; 2018 . All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="homepage.html" target="_blank">Dinder Team</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--//END FOOTER -->
+
+        <!-- jQuery, Bootstrap JS. -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{% static '/js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static '/js/popper.min.js' %}"></script>
+        <script src="{% static '/js/bootstrap.min.js' %}"></script>
+        <script src="{% static '/js/jquery.js' %}"></script>
+        <!-- <script src='{% static '/js/swiper.min.js' %}'></script> -->
+        <script src="{% static '/js/custom.js' %}"></script>
+
+        <script>
+            $(window).scroll(function() {
+                // 100 = The point you would like to fade the nav in.
+
+                if ($(window).scrollTop() > 100) {
+
+                    $('.fixed').addClass('is-sticky');
+
+                } else {
+
+                    $('.fixed').removeClass('is-sticky');
+
+                };
+            });
+        </script>
+    </body>
+</html>
